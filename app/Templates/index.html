@@ -1,0 +1,16 @@
+{% extends "base.html" %}  
+<!-- establish inheritance link btwn the two templates -->
+
+{% block content %}
+
+    <h1>Hello, {{ user.username }}!</h1>
+
+         {% for post in posts %}
+        <div>
+            <p>{{post.author.username }} says:
+                <b>{{ post.body }}</b>
+            </p>
+        </div>
+        {% endfor %}
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur cumque enim consectetur nihil dolore sunt eos nisi tempore aliquam a. Quod quia et modi explicabo numquam nam suscipit voluptatem ea.
+{% endblock %}
