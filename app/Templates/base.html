@@ -11,8 +11,8 @@
     <body>
         <div>
             Microblog: 
-            <a href="/index">Home</a>
-            <a href="/login">Login</a>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
         </div>
         <hr>
 
@@ -25,7 +25,7 @@
         </ul>
         {% endif %}
         {% endwith %}
-        
+
         {% block content %}{% endblock %}
         <!-- block control statement to define the place where the derived templates can insert themselves -->
     </body>
