@@ -1,4 +1,5 @@
 from app import app  #import app variable from app pckg
+from app import db
 from app.models import User, Post
 
 @app.shell_context_processor
