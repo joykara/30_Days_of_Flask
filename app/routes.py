@@ -10,9 +10,10 @@ from app.models import User
 @app.route('/index')
 @login_required  #ensure current user is logged in and authenticated
 def index():
-    #default users and posts
+   """  #default users and posts
     user = {'username': 'LeeKnow'}
-    posts = [
+    """    
+   posts = [
         {
             'author': {'username': 'Jeiji'},
             'body': 'We stan StrayKids!'
@@ -21,8 +22,8 @@ def index():
             'author': {'username': 'Memier'},
             'body': 'Hyunjin is so cool!'
         }
-    ]
-    return render_template('index.html', title='Home', user=user, posts=posts)
+    ] 
+   return render_template('index.html', title='Home', posts=posts)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
