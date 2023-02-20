@@ -1,5 +1,6 @@
-from flask import render_template, flash, redirect, url_for  #rendering- convert template to HTML page
+from flask import render_template, flash, redirect, url_for, request  #rendering- convert template to HTML page
 from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.urls import url_parse
 from app import app
 from app.forms import LoginForm
 from app.models import User
@@ -35,7 +36,12 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)   #register the user as logged in
-        return redirect(url_for('index'))
+        
+        next_page = request.args.get('next')  #exposes the contents of the query string in a friendly dictionary format
+        #url_parse-- determine if the URL is relative or absolute
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('index')
+        return redirect(next_page)
     
     return render_template('login.html', title='Sign In', form=form)
 
