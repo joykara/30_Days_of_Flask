@@ -73,7 +73,7 @@ def register():
 @app.route('/user/<username>')
 @login_required   #accessible to logged in users
 def user(username):
-    user = User.query.filter_by(username=username).first_or_404()
+    user = User.query.filter_by(username=username).first_or_404()    # no results sends 404 error back.
     posts = [
         {'author': user, 'body': 'Test post #1'},
         {'author': user, 'body': 'Test post #2'}
