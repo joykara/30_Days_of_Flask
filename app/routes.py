@@ -82,7 +82,8 @@ def user(username):
     ]
     return render_template('user.html', user=user, posts=posts)
 
-@app.before_request
+#record last visit time for user
+@app.before_request  #executed before the view function.
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
